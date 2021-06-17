@@ -1,0 +1,552 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [
+        {
+            "name": "PatternLibService",
+            "id": "injectable-PatternLibService-34e0db803a2f0a88394224d35c00c928",
+            "file": "projects/pattern-lib/src/lib/pattern-lib.service.ts",
+            "properties": [],
+            "methods": [],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class PatternLibService {\n\n  constructor() { }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 6
+            },
+            "type": "injectable"
+        }
+    ],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AccordionComponent",
+            "id": "component-AccordionComponent-1254c15e1b718a0ba8bbbd8c97efdfee",
+            "file": "projects/pattern-lib/src/lib/accordion/accordion.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sdc-accordion",
+            "styleUrls": [
+                "./accordion.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./accordion.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "arrow-direction",
+                    "line": 23,
+                    "type": "Placement"
+                },
+                {
+                    "name": "css-class",
+                    "line": 24,
+                    "type": "string"
+                },
+                {
+                    "name": "open",
+                    "line": 26,
+                    "type": "boolean"
+                },
+                {
+                    "name": "testId",
+                    "line": 28,
+                    "type": "string"
+                },
+                {
+                    "name": "title",
+                    "line": 25,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "accordionChanged",
+                    "defaultValue": "new EventEmitter<boolean>()",
+                    "line": 27,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "accordionArrowDirection",
+                    "defaultValue": "Placement",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "toggleAccordion",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from \"@angular/core\";\n//import { Placement } from \"../common/enums\";\n\nexport enum Placement {\n  left = 'left',\n  right = 'right',\n  top = 'top',\n  bottom = 'bottom'\n}\n\n@Component({\n    selector: 'sdc-accordion',\n    templateUrl: './accordion.component.html',\n    styleUrls: ['./accordion.component.scss']\n})\n\n\n\nexport class AccordionComponent {\n\n\n\n    @Input('arrow-direction') arrowDirection: Placement;\n    @Input('css-class') customCSSClass: string;\n    @Input('title') title: string;\n    @Input('open') open: boolean;\n    @Output('accordionChanged') changed = new EventEmitter<boolean>();\n    @Input() public testId: string;\n\n    public accordionArrowDirection = Placement;\n\n    public toggleAccordion(){\n        this.open = !this.open;\n        this.changed.emit(this.open);\n    }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./accordion.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"sdc-accordion\" [ngClass]=\"customCSSClass\" [attr.data-tests-id]=\"testId\">\n    <div class=\"sdc-accordion-header\" (click)=\"toggleAccordion()\" [ngClass]=\"{'arrow-right': arrowDirection === accordionArrowDirection.right}\">\n        <div class=\"svg-icon-wrapper bottom\" [ngClass]=\"{'down': open}\">\n            <svg-icon [name]=\"'chevron-up'\"  [size]=\"'large'\"  [clickable]=\"true\" [mode]=\"'secondary'\"></svg-icon>\n        </div>\n        <div class=\"title\">\n            {{title}}\n        </div>\n    </div>\n    <div class=\"sdc-accordion-body\" [ngClass]=\"{open: open}\">\n        <ng-content></ng-content>\n    </div>\n</div>\n"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-efaa18c63f21616576ff092f14b78704",
+            "file": "projects/pattern-lib/src/lib/button/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "pl-button",
+            "styleUrls": [
+                "./button.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./button.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "label",
+                    "line": 9,
+                    "type": "string | null"
+                },
+                {
+                    "name": "pink",
+                    "line": 10,
+                    "type": "boolean"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\n\n@Component({\n  selector: 'pl-button', // pl is our prefix\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss']\n})\nexport class ButtonComponent implements OnInit {\n  @Input('label') label: string | null;\n  @Input('pink') pink: boolean;\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "button {\r\n  background: blue;\r\n  padding: 1rem 2rem;\r\n  border-radius: 3px;\r\n  appearance: none;\r\n  border: 0;\r\n  -webkit-appearance: none;\r\n  -moz-appearance: none;\r\n  font-size: 1.5rem;\r\n  letter-spacing: 1px;\r\n  color: white;\r\n  box-shadow: 0 4px 10px rgba(55, 55, 55, 0.3),\r\n    0 6px 35px rgba(55, 55, 200, 0.7);\r\n  cursor: pointer;\r\n\r\n  &.make-pink {\r\n    background: #ff00a2;\r\n    box-shadow: 0 4px 10px rgba(55, 55, 55, 0.3), 0 6px 35px rgb(200 55 150 / 70%);\r\n  }\r\n}\r\n",
+                    "styleUrl": "./button.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 10
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<button [attr.is-pink]=\"pink\" [ngClass]=\"{'make-pink': pink}\">{{label ? \"😎 \" + label : \"No Label provided 🧐\"}}</button>\n"
+        },
+        {
+            "name": "PatternLibComponent",
+            "id": "component-PatternLibComponent-de8134bbcc97996ac01e0b7e25b0a671",
+            "file": "projects/pattern-lib/src/lib/pattern-lib.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "pl-pattern-lib",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<p>\n  pattern-lib works!\n</p>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'pl-pattern-lib',\n  template: `\n    <p>\n      pattern-lib works!\n    </p>\n  `,\n  styles: [\n  ]\n})\nexport class PatternLibComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 13
+            },
+            "implements": [
+                "OnInit"
+            ]
+        }
+    ],
+    "modules": [
+        {
+            "name": "PatternLibModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AccordionComponent"
+                        },
+                        {
+                            "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "PatternLibComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "PatternLibComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/pattern-lib/src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "FancyBlueButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "FancyPinkButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "positions",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Accordion.stories.ts",
+                "type": "[]",
+                "defaultValue": "['right', 'left']"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/pattern-lib/src/test.ts",
+                "type": "literal type"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Button.stories.ts",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\r\n  component: ButtonComponent,\r\n  props: args,\r\n})"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [
+            {
+                "name": "Placement",
+                "childs": [
+                    {
+                        "name": "left",
+                        "value": "left"
+                    },
+                    {
+                        "name": "right",
+                        "value": "right"
+                    },
+                    {
+                        "name": "top",
+                        "value": "top"
+                    },
+                    {
+                        "name": "bottom",
+                        "value": "bottom"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "description": "",
+                "file": "projects/pattern-lib/src/lib/accordion/accordion.component.ts"
+            }
+        ],
+        "groupedVariables": {
+            "projects/pattern-lib/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/pattern-lib/src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/pattern-lib/src/test.ts",
+                    "type": "literal type"
+                }
+            ],
+            "stories/Button.stories.ts": [
+                {
+                    "name": "FancyBlueButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "FancyPinkButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Button.stories.ts",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "(args: ButtonComponent) => ({\r\n  component: ButtonComponent,\r\n  props: args,\r\n})"
+                }
+            ],
+            "stories/Accordion.stories.ts": [
+                {
+                    "name": "positions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Accordion.stories.ts",
+                    "type": "[]",
+                    "defaultValue": "['right', 'left']"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {
+            "projects/pattern-lib/src/lib/accordion/accordion.component.ts": [
+                {
+                    "name": "Placement",
+                    "childs": [
+                        {
+                            "name": "left",
+                            "value": "left"
+                        },
+                        {
+                            "name": "right",
+                            "value": "right"
+                        },
+                        {
+                            "name": "top",
+                            "value": "top"
+                        },
+                        {
+                            "name": "bottom",
+                            "value": "bottom"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "description": "",
+                    "file": "projects/pattern-lib/src/lib/accordion/accordion.component.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/pattern-lib/src/lib/accordion/accordion.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AccordionComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/pattern-lib/src/lib/button/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/pattern-lib/src/lib/pattern-lib.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PatternLibComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/pattern-lib/src/lib/pattern-lib.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "PatternLibService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/pattern-lib/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/pattern-lib/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Accordion.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "positions",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "FancyBlueButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "FancyPinkButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}
