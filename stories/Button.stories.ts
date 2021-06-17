@@ -6,7 +6,7 @@ export default {
   component: ButtonComponent,
   argTypes: {
     label: { control: 'text' },
-    // we need to override here since in Angular it could be null as well (see button.component.ts) and therefore it would become an ambigious data type for storybook
+    // we need to override here since in Angular it could be null as well (see button.component.ts) and therefore it would become an ambigious data type for storybook , add comment for testing
   }
 } as Meta;
 
